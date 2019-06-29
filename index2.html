@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng good-cheap-fast</title>
+    <script type="text/javascript">
+        //kiểm tra id nào vào cuối cùng và xử lí
+        let array = [];
+        function add(id) {
+            if (array.length<2) {
+                array.push(id);
+            } else {
+                if (id.toString() == 'fast') {
+                    document.getElementById("cheap").checked = false;
+                    list_cheap.pop();
+                    array.pop();
+                    array.push(id);
+                } else if (id.toString() == 'cheap') {
+                    document.getElementById("good").checked = false;
+                    list_good.pop();
+                    array.pop();
+                    array.push(id);
+                } else {
+                    document.getElementById("fast").checked = false;
+                    list_fast.pop();
+                    array.pop();
+                    array.push(id);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="radio" id="good" onclick="checkGood('good')"> Good <br>
+<input type="radio" id="cheap" onclick="checkCheap('cheap')"> Cheap <br>
+<input type="radio" id="fast" onclick="checkFast('fast')"> Fast
+
+<script type="text/javascript">
+    //kiểm tra chỉ nhận 1 lần click
+    let list_good = [];
+    let list_cheap = [];
+    let list_fast = [];
+    function checkGood(id) {
+        if (list_good.length == 0) {
+            list_good.push(id);
+            add(id);
+        }
+    }
+    function checkCheap(id) {
+        if (list_cheap.length == 0) {
+            list_cheap.push(id);
+            add(id);
+        }
+    }
+    function checkFast(id) {
+        if (list_fast.length == 0) {
+            list_fast.push(id);
+            add(id);
+        }
+    }
+</script>
+</body>
+</html>
